@@ -1,0 +1,80 @@
+
+
+.content {
+  padding: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--header-height));
+}
+
+.profile-container {
+  text-align: center;
+  max-width: 600px;
+}
+
+.page-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.75rem;
+  color: var(--foreground);
+}
+
+.description {
+  color: var(--secondary);
+  font-size: 0.8375rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.sync-profile-button {
+  background-color: var(--foreground);
+  color: var(--background);
+  border: none;
+  padding: 0.55rem 1.4rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.8375rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.sync-profile-button:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    background-color: var(--background);
+  }
+  
+  .main-content {
+    margin-left: 0;
+  }
+  
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--foreground);
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: auto;
+  }
+  
+  .content {
+    padding: 1.5rem;
+  }
+  
+  .page-title {
+    font-size: 1.75rem;
+  }
+}
