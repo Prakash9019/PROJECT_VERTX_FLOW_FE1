@@ -2,13 +2,214 @@ import React, { useState } from "react";
 import "./style.css";
 import Navigation2 from "../../components/navigation/component2";
 import { useNavigate } from "react-router-dom"
-import Match_flow2 from "./matchflow2/match_flow2";
+
+
+import "./style1.css";
+
+import { CheckSquare, Square } from "lucide-react";
+import "./style3.css";
+
+const investorsData = [
+  {
+    name: "Trind Ventures",
+    firmType: "VC Firm",
+    thesis: "We invest in European software startups with a consumer or community component, such as marketplaces and platforms.",
+    entryStage: "Early revenue",
+    chequeRange: "$100K - $1M",
+    matchScore: 95,
+    isChecked: true,
+  },
+  {
+    name: "NextSTEP",
+    firmType: "VC Firm",
+    thesis: "We invest in European software startups with a consumer or community component, such as marketplaces and platforms.",
+    entryStage: "Early revenue",
+    chequeRange: "$100K - $1M",
+    matchScore: 80,
+    isChecked: false,
+  },
+  // Add more investor data objects as needed
+];
+
+function Run_Flow() {
+  const [investors, setInvestors] = useState(investorsData);
+
+  const handleCheckboxChange = (index) => {
+    const newInvestors = [...investors];
+    newInvestors[index].isChecked = !newInvestors[index].isChecked;
+    setInvestors(newInvestors);
+  };
+
+  const matchedInvestorsCount = investors.filter(investor => investor.isChecked).length;
+
+  return (
+    <div >
+
+      <div className="layout-container">
+        <main className="main-content">
+          <div className="page-header">
+            <h2>Mark your preferred investors</h2>
+            <p>
+              Prioritize those who see potential in you.
+              <br />
+              Rank and select investors for targeted email outreach.
+            </p>
+          </div>
+
+          <div className="matched-investors">
+            <div className="matched-card">
+              <h3>Investors Matched</h3>
+              <p className="matched-number">{matchedInvestorsCount}</p>
+            </div>
+          </div>
+
+          <div className="investors-table-container">
+            <table className="investors-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Thesis</th>
+                  <th>Entry Stage</th>
+                  <th>Cheque range</th>
+                  <th>Match Score</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                {investors.map((investor, index) => (
+                  <tr key={index}>
+                    <td>
+                      <div className="investor-name">
+                        <div>{investor.name}</div>
+                        <div className="firm-type">{investor.firmType}</div>
+                      </div>
+                    </td>
+                    <td className="thesis-cell">{investor.thesis}</td>
+                    <td>
+                      <span className="badge">{investor.entryStage}</span>
+                    </td>
+                    <td>
+                      <span className="badge">{investor.chequeRange}</span>
+                    </td>
+                    <td>
+                      <span className={`score-badge score-${investor.matchScore >= 90 ? 'high' : 'medium'}`}>
+                        {investor.matchScore}%
+                      </span>
+                    </td>
+                    <td onClick={() => handleCheckboxChange(index)}>
+                      {investor.isChecked ? (
+                        <CheckSquare className="check-icon checked" />
+                      ) : (
+                        <Square className="check-icon" />
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <button className="next-btn">Next</button>
+        </main>
+      </div>
+    </div>
+  );
+}
+
+
+const Match_flow2 = ({setCurrentComponent}) => {
+ 
+  const [visibleExample, setVisibleExample] = useState(null);
+  const toggleExampleData = (id) => {
+    setVisibleExample(visibleExample === id ? null : id);
+  };
+  return (
+        <div className="main-content">
+          <div className="form-container">
+            <div>
+              <h1 className="page-title">Founder profile details</h1>
+              <p className="description">Complete missing fields manually.</p>
+            </div>
+            <div className="form-fields-container">
+              <div className="placeholder-space"></div>
+              <form>
+                <div className="form-group">
+                  <label className="form-label">Choose your target countries to secure your investment</label>
+                  <select className="select-input">
+                    <option value="">Select your target countries...</option>
+                  </select>
+                  <span className="toggle-icon" onClick={() => toggleExampleData('countries')}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M19 9l-7 7-7-7"/>
+                    </svg>
+                  </span>
+                  <div className={`example-data ${visibleExample === 'countries' ? 'visible' : ''}`} id="countries-example">
+                    <p>Example: United States, Canada, Germany</p>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Current traction</label>
+                  <select className="select-input">
+                    <option value="">Pre-Product Launch</option>
+                  </select>
+                  <span className="toggle-icon" onClick={() => toggleExampleData('traction')}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M19 9l-7 7-7-7"/>
+                    </svg>
+                  </span>
+                  <div className={`example-data ${visibleExample === 'traction' ? 'visible' : ''}`} id="traction-example">
+                    <p>Example: Pre-Product Launch, Post-Product Launch, Scaling</p>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Required funding</label>
+                  <select className="select-input">
+                    <option value="">&lt;$100K</option>
+                  </select>
+                  <span className="toggle-icon" onClick={() => toggleExampleData('funding')}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M19 9l-7 7-7-7"/>
+                    </svg>
+                  </span>
+                  <div className={`example-data ${visibleExample === 'funding' ? 'visible' : ''}`} id="funding-example">
+                    <p>Example: &lt;$100K, $100K-$500K, $500K-$1M</p>
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Previous funding</label>
+                  <select className="select-input">
+                    <option value="">Angel Investment</option>
+                  </select>
+                  <span className="toggle-icon" onClick={() => toggleExampleData('previous-funding')}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M19 9l-7 7-7-7"/>
+                    </svg>
+                  </span>
+                  <div className={`example-data ${visibleExample === 'previous-funding' ? 'visible' : ''}`} id="previous-funding-example">
+                    <p>Example: Angel Investment, Seed Funding, Series A</p>
+                  </div>
+                </div>
+
+                <button onClick={() => setCurrentComponent(2)} type="submit" className="run-flow-button">Run flow</button>
+              </form>
+            </div>
+          </div>
+        </div>
+   
+  )
+}
+
+
 
 function Match_Flow1() {
   const navigate = useNavigate();
-  const [component, setComponent] = useState(false);
+  const [component, setCurrentComponent] = useState(0);
+
   const handleSyncProfile = () => {
-    setComponent(true);
+    setCurrentComponent(1);
   };
   const [sidebarOpen, setSidebarOpen] = useState(true);
     
@@ -39,7 +240,7 @@ function Match_Flow1() {
       </header>
       <Navigation2 />
   
-     {component ?  <main className="founder">
+     {component ==0 ?  <main className="founder">
         <div className="content">
           <div className="profile-container">
             <h1 className="page-title">Founder profile details</h1>
@@ -53,7 +254,7 @@ function Match_Flow1() {
         </div>
       </main>
       :
-      <Match_flow2 />
+      component == 1 ?   <Match_flow2 setCurrentComponent={setCurrentComponent} /> :  <Run_Flow setCurrentComponent={setCurrentComponent} />
        
       }
       

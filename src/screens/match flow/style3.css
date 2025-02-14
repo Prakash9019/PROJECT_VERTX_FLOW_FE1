@@ -104,7 +104,6 @@
     top:15%;
   width:80%;
   flex:1;
-    padding: 2rem;
     overflow-x: auto;
   }
   
@@ -235,9 +234,7 @@
   
   /* Responsive Design for Mac Screens */
   @media screen and (min-width: 1280px) {
-    .main-content {
-      padding: 2.5rem 3rem;
-    }
+   
   
     .investors-table-container {
       padding: 2rem;
@@ -276,9 +273,7 @@
       padding: 1rem;
     }
   
-    .main-content {
-      padding: 1rem;
-    }
+
   
     .investors-table-container {
       padding: 1rem;

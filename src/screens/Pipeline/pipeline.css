@@ -1,0 +1,200 @@
+
+
+/* .app {
+  display: flex;
+  min-height: 100vh;
+} */
+
+.pipeline{
+    position: absolute;
+    left:20%;
+    top: 15%;   
+  width:80%;
+  flex:1;
+    padding: 2rem;
+    
+}
+
+.main-content4 {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  background-color: var(--main-background);
+  overflow: hidden;
+}
+
+.content {
+  padding: 1.5rem;
+  height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+}
+
+.pipeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.pipeline-description {
+  color: var(--secondary);
+  font-size: 0.875rem;
+}
+
+.flow-settings-button {
+  background-color: var(--accent);
+  color: var(--foreground);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.scrollable-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 1rem;
+}
+
+.pipeline-sections {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.pipeline-section {
+  min-width: 460px;
+  background-color: var(--accent);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  height: fit-content;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 0.875rem;
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+.section-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.refresh-icon {
+  cursor: pointer;
+  color: white;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.investor-card {
+  background-color: var(--main-background);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.investor-info h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.investor-info p {
+  font-size: 0.75rem;
+  color: var(--secondary);
+}
+
+.status-badge {
+  display: inline-block;
+  background-color: white;
+  color: var(--secondary);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+}
+
+.card-menu {
+  cursor: pointer;
+  color: var(--secondary);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  color: white;
+}
+
+.per-page-select {
+  background-color: var(--main-background);
+  border: 1px solid var(--border-color);
+  color: var(--foreground);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.page-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.page-arrow {
+  background: none;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+}
+
+.empty-container {
+  min-height: 400px;
+  background-color: var(--main-background);
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+
+  .pipeline-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pipeline-sections {
+    padding-bottom: 2rem;
+  }
+}

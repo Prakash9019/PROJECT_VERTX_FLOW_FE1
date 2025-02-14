@@ -7,10 +7,12 @@
 
 .form-container {
   display: flex;
-  top:5%;
+  left: 20%;
+  top:15%;
   position: relative;
   gap: 2rem;
   align-items: flex-start;
+  
 }
 
 .page-title {
