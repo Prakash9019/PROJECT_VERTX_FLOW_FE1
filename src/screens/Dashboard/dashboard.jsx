@@ -1,20 +1,10 @@
-import React, { useState } from "react";
-import "./style.css";
+import React from 'react'
 import Navigation2 from "../../components/navigation/component2";
-import { useNavigate } from "react-router-dom"
-import Match_flow2 from "./matchflow2/match_flow2";
-
-function Match_Flow1() {
-  const navigate = useNavigate();
-  const [component, setComponent] = useState(false);
-  const handleSyncProfile = () => {
-    setComponent(true);
-  };
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-    
+import "./dash.css"
+const Dashboard = () => {
   return (
-    <div >
-      <header className="top-bar">
+    <div>
+        <header className="top-bar">
         <div className="logo">
           <svg
             width="140"
@@ -38,27 +28,51 @@ function Match_Flow1() {
         </div>
       </header>
       <Navigation2 />
-  
-     {component ?  <main className="founder">
-        <div className="content">
-          <div className="profile-container">
-            <h1 className="page-title">Founder profile details</h1>
-            <p className="description">
-              Sync your profile to auto-fill business details.
-              <br />
-              Complete any missing fields manually.
-            </p>
-            <button  onClick={handleSyncProfile} className="sync-profile-button">Sync profile</button>
-          </div>
+
+      <main className="main-content">
+        <div className="card">
+
+        <div className="cardContent">
+        <div className='card-bg'> 
+        <div className="cardLabel">Investors Matched</div>
+        <div className="cardValue">0</div>
         </div>
-      </main>
-      :
-      <Match_flow2 />
-       
-      }
+         <div className="cardFooter">
+        Refer to flow for details.
+      </div>
+      </div>
+    
+
+
+      <div className="cardContent">
+        <div className='card-bg'> 
+        <div className="cardLabel">Investors Matched</div>
+        <div className="cardValue">0</div>
+        </div>
+         <div className="cardFooter">
+        Refer to flow for details.
+      </div>
+      </div>
+     
+
+
+
+      <div className="cardContent">
+        <div className='card-bg'> 
+        <div className="cardLabel">Investors Matched</div>
+        <div className="cardValue">0</div>
+        </div>
+         <div className="cardFooter">
+        Refer to flow for details.
+      </div>
+      </div>
       
+
+
+    </div> </main>
     </div>
-  );
+   
+  )
 }
 
-export default Match_Flow1;
+export default Dashboard

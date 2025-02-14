@@ -1,0 +1,12 @@
+.description2 {
+    width: 80%;
+    display: flex;
+    position: relative;
+    left:20%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh; /* Full height to center vertically */
+  }
+  

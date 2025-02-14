@@ -1,11 +1,44 @@
-import { LayoutGrid, Send, FileText, BookOpen, CheckSquare, Square } from "lucide-react"
-import "./style.css"
-import Navigation2 from "../../components/navigation/component2"
+import React, { useState } from "react";
+import { CheckSquare, Square } from "lucide-react";
+import "./style.css";
+import Navigation2 from "../../../components/navigation/component2";
+
+const investorsData = [
+  {
+    name: "Trind Ventures",
+    firmType: "VC Firm",
+    thesis: "We invest in European software startups with a consumer or community component, such as marketplaces and platforms.",
+    entryStage: "Early revenue",
+    chequeRange: "$100K - $1M",
+    matchScore: 95,
+    isChecked: true,
+  },
+  {
+    name: "NextSTEP",
+    firmType: "VC Firm",
+    thesis: "We invest in European software startups with a consumer or community component, such as marketplaces and platforms.",
+    entryStage: "Early revenue",
+    chequeRange: "$100K - $1M",
+    matchScore: 80,
+    isChecked: false,
+  },
+  // Add more investor data objects as needed
+];
 
 export default function Run_Flow() {
+  const [investors, setInvestors] = useState(investorsData);
+
+  const handleCheckboxChange = (index) => {
+    const newInvestors = [...investors];
+    newInvestors[index].isChecked = !newInvestors[index].isChecked;
+    setInvestors(newInvestors);
+  };
+
+  const matchedInvestorsCount = investors.filter(investor => investor.isChecked).length;
+
   return (
-    <div className="dashboard">
-       <header className="top-bar">
+    <div >
+      <header className="top-bar">
         <div className="logo">
           <svg
             width="140"
@@ -28,13 +61,10 @@ export default function Run_Flow() {
           <button className="profile-button">Profile</button>
         </div>
       </header>
-    <Navigation2 />
+
+      <Navigation2 />
 
       <div className="layout-container">
-        {/* Sidebar */}
-       
-
-        {/* Main Content */}
         <main className="main-content">
           <div className="page-header">
             <h2>Mark your preferred investors</h2>
@@ -45,15 +75,13 @@ export default function Run_Flow() {
             </p>
           </div>
 
-          {/* Investors Matched Card */}
           <div className="matched-investors">
             <div className="matched-card">
               <h3>Investors Matched</h3>
-              <p className="matched-number">2</p>
+              <p className="matched-number">{matchedInvestorsCount}</p>
             </div>
           </div>
 
-          {/* Investors Table */}
           <div className="investors-table-container">
             <table className="investors-table">
               <thead>
@@ -67,54 +95,35 @@ export default function Run_Flow() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <div className="investor-name">
-                      <div>Trind Ventures</div>
-                      <div className="firm-type">VC Firm</div>
-                    </div>
-                  </td>
-                  <td className="thesis-cell">
-                    We invest in European software startups with a consumer or community component, such as marketplaces
-                    and platforms.
-                  </td>
-                  <td>
-                    <span className="badge">Early revenue</span>
-                  </td>
-                  <td>
-                    <span className="badge">$100K - $1M</span>
-                  </td>
-                  <td>
-                    <span className="score-badge score-high">95%</span>
-                  </td>
-                  <td>
-                    <CheckSquare className="check-icon checked" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className="investor-name">
-                      <div>NextSTEP</div>
-                      <div className="firm-type">VC Firm</div>
-                    </div>
-                  </td>
-                  <td className="thesis-cell">
-                    We invest in European software startups with a consumer or community component, such as marketplaces
-                    and platforms.
-                  </td>
-                  <td>
-                    <span className="badge">Early revenue</span>
-                  </td>
-                  <td>
-                    <span className="badge">$100K - $1M</span>
-                  </td>
-                  <td>
-                    <span className="score-badge score-medium">80%</span>
-                  </td>
-                  <td>
-                    <Square className="check-icon" />
-                  </td>
-                </tr>
+                {investors.map((investor, index) => (
+                  <tr key={index}>
+                    <td>
+                      <div className="investor-name">
+                        <div>{investor.name}</div>
+                        <div className="firm-type">{investor.firmType}</div>
+                      </div>
+                    </td>
+                    <td className="thesis-cell">{investor.thesis}</td>
+                    <td>
+                      <span className="badge">{investor.entryStage}</span>
+                    </td>
+                    <td>
+                      <span className="badge">{investor.chequeRange}</span>
+                    </td>
+                    <td>
+                      <span className={`score-badge score-${investor.matchScore >= 90 ? 'high' : 'medium'}`}>
+                        {investor.matchScore}%
+                      </span>
+                    </td>
+                    <td onClick={() => handleCheckboxChange(index)}>
+                      {investor.isChecked ? (
+                        <CheckSquare className="check-icon checked" />
+                      ) : (
+                        <Square className="check-icon" />
+                      )}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -123,6 +132,5 @@ export default function Run_Flow() {
         </main>
       </div>
     </div>
-  )
+  );
 }
-

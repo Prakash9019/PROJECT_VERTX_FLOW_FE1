@@ -1,0 +1,28 @@
+.dashboardContainer {
+    flex-grow: 1;
+    flex-basis: auto;
+  }
+  
+  .dashboardContent {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .statCardsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 64px;
+  }
+  
+  @media (max-width: 991px) {
+    .dashboardContent {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+  
+    .statCardsContainer {
+      margin-top: 40px;
+    }
+  }

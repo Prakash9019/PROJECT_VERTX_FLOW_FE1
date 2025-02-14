@@ -1,5 +1,5 @@
 import "./style1.css";
-import Navigation2 from "../../components/navigation/component2";
+import Navigation2 from "../../../components/navigation/component2";
 import React,{useState} from 'react'
 import { useNavigate } from "react-router-dom";
 const Match_flow2 = () => {
